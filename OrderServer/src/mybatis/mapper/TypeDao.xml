@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+            PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+            "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.softeem.dao.TypeDao">
+	<select id="selectAllType" resultType="com.softeem.bean.TypeBean">
+		select * from tb_type;
+	</select>
+	
+	<select id="selectById" resultType="com.softeem.bean.TypeBean" parameterType="long">
+		select * from tb_type where type_id = #{id}
+	</select>
+</mapper>
