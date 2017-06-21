@@ -1,13 +1,15 @@
-package com.softeem.http;
+package com.softeem.orderapp.http;
 
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.softeem.bean.TypeBean;
+import com.softeem.orderapp.bean.MenuBean;
+import com.softeem.orderapp.bean.TypeBean;
+import com.softeem.orderapp.constant.ServerUrl;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -23,13 +25,29 @@ public class MenuHttpUtils {
     private static final OkHttpClient client = new OkHttpClient();
 
     public void getAllTypes(final HttpCallback callback){
-        //OkHttp : 网络请求框架
 
+        Type t =  new TypeToken<List<TypeBean>>(){}.getType();
+        getData(ServerUrl.GET_ALL_TYPE,callback,t);
+    }
+
+
+    public void getAllMenu(final HttpCallback callback){
+        Type t = new TypeToken<List<MenuBean>>(){}.getType();
+        getData(ServerUrl.GET_ALL_MENU,callback,t);
+    }
+
+    public void getMenuByType(int typeId,final HttpCallback callback){
+        Type t = new TypeToken<List<MenuBean>>(){}.getType();
+        getData(ServerUrl.GET_MENU_BY_TYPE + typeId,callback,t);
+    }
+
+
+    public void getData(String url,final HttpCallback callback,final Type type){
         // 创建请求对象
         final Request request = new Request.Builder()
                 .get()
                 .tag(this)
-                .url("http://218.197.97.78:9090/OrderServer/menuController/getAllType.action")
+                .url(url)
                 .build();
 
         //开启线程.执行网络操作
@@ -46,15 +64,12 @@ public class MenuHttpUtils {
 
                         Log.i("OkHttp","打印GET响应的数据：" + json);
 
-                        // json 处理工具
+                        //json --> java对象
                         Gson gson = new Gson();
+                        Object data = gson.fromJson(json,type);
 
-                        List<TypeBean> typeBeanList =   gson.fromJson(json,new TypeToken<List<TypeBean>>(){}.getType());
-
-                        Log.i("OkHttp",typeBeanList.toString());
-
-                        // 执行 UI 操作
-                        callback.onSuccess(typeBeanList);
+                        // json 处理工具
+                        callback.onSuccess(data);
                     } else {
                         String message ="Unexpected code " + response;
 
@@ -65,10 +80,6 @@ public class MenuHttpUtils {
                 }
             }
         }.start();
-
     }
-
-
-
 
 }

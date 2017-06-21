@@ -1,4 +1,4 @@
-package com.softeem.bean;
+package com.softeem.orderapp.bean;
 
 public class TypeBean {
     private int typeId;

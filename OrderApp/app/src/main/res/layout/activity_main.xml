@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:background="@android:color/holo_blue_bright"
+        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="点餐主页"
