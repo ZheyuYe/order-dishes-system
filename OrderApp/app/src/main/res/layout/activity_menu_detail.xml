@@ -8,6 +8,7 @@
     tools:context="com.softeem.orderapp.activity.MenuDetailActivity">
 
     <TextView
+        android:id="@+id/menu_name_TextView"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:gravity="center"
@@ -38,7 +39,7 @@
                 android:src="@mipmap/menu_test"/>
 
             <Button
-                android:layout_below="@+id/detail_pic_ImageView"
+                android:layout_below="@id/detail_pic_ImageView"
                 android:text="返回"
                 android:layout_marginLeft="100dp"
                 android:layout_width="wrap_content"
@@ -64,33 +65,75 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:paddingTop="20dp"
+                android:id="@+id/menu_type_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="类别:"/>
 
             <TextView
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:id="@+id/menu_price_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="价格:"/>
 
             <TextView
+                android:textAlignment="center"
+                android:padding="10dp"
+                android:id="@+id/menu_cutprice_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="优惠价格:"/>
 
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"/>
+           <LinearLayout
+               android:gravity="center"
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <TextView
+                   android:textColor="#9b7611"
+                   android:padding="10dp"
+                   android:textStyle="bold"
+                   android:background="@android:color/transparent"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="&lt;"/>
+
+               <TextView
+                   android:padding="10dp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="1"/>
+
+               <TextView
+                   android:textColor="#9b7611"
+                   android:padding="10dp"
+                   android:textStyle="bold"
+                   android:background="@android:color/transparent"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="&gt;"/>
+           </LinearLayout>
 
 
             <TextView
+                android:layout_marginTop="30dp"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="菜品介绍"/>
 
             <TextView
+                android:padding="10dp"
+                android:id="@+id/menu_introduce_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="是热菜菜谱之一。以五花肉为制作主料，最好选用肥瘦相间的三层肉来做。红烧肉的烹饪技巧以砂锅为主，肥瘦相间，香甜松软，入口即化。红烧肉在我国各地流传甚广，是一道著名的大众菜肴。"/>

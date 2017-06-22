@@ -1,6 +1,8 @@
 package com.softeem.orderapp.bean;
 
-public class MenuBean {
+import java.io.Serializable;
+
+public class MenuBean implements Serializable {
     private int menuId;
     private String menuName;
     private String menuIntroduce;

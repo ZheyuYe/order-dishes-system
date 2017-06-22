@@ -1,5 +1,6 @@
 package com.softeem.orderapp.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,6 +47,22 @@ public class MenuActivity extends AppCompatActivity {
         menuGridView = (GridView) findViewById(R.id.menu_GridView);
         menuGridViewAdapter = new MenuGridViewAdapter(menuList, LayoutInflater.from(this),this);
         menuGridView.setAdapter(menuGridViewAdapter);
+
+        // TODO 给 gridView 添加条目点击事件
+        menuGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //创建 Intent
+                Intent i = new Intent(MenuActivity.this,MenuDetailActivity.class);
+
+                //当前条目对应的数据
+                MenuBean m = menuList.get(position);
+                //携带数据到 MenuDetailActivity
+                i.putExtra("menuBean",m);
+
+                startActivity(i);
+            }
+        });
 
 
         //加载菜谱

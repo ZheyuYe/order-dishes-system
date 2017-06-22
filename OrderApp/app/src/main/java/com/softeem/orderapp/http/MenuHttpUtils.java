@@ -41,6 +41,11 @@ public class MenuHttpUtils {
         getData(ServerUrl.GET_MENU_BY_TYPE + typeId,callback,t);
     }
 
+    public void getTypeName(int menuId,final HttpCallback callback){
+        Type t = new TypeToken<TypeBean>(){}.getType();
+        getData(ServerUrl.GET_TYPE_BY_MENU_ID+menuId,callback,t);
+    }
+
 
     public void getData(String url,final HttpCallback callback,final Type type){
         // 创建请求对象
